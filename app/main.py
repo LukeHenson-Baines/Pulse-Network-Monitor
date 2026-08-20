@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from app.services.bandwidth import get_bandwidth_usage
 from app.services.ping import measure_ping
 
 
@@ -28,3 +29,8 @@ def health():
 @app.get("/ping")
 def ping_host(host: str = "8.8.8.8"):
     return measure_ping(host)
+
+
+@app.get("/bandwidth")
+def bandwidth():
+    return get_bandwidth_usage()
