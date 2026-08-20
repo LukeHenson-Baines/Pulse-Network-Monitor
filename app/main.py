@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 
+from app.services.ping import measure_ping
+
+
 app = FastAPI(
     title="Pulse",
     description="A lightweight network monitoring and diagnostics API.",
@@ -20,3 +23,8 @@ def health():
     return {
         "status": "healthy",
     }
+
+
+@app.get("/ping")
+def ping_host(host: str = "8.8.8.8"):
+    return measure_ping(host)
