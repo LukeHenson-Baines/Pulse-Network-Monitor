@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse | Network Monitor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <div>
+                <h1>Pulse</h1>
+                <p>Real-time network monitoring and diagnostics</p>
+            </div>
+
+            <div id="connection-status" class="status-badge">
+                Checking...
+            </div>
+        </header>
+
+        <section class="metrics-grid">
+            <article class="card">
+                <span class="label">Latency</span>
+                <span class="value" id="ping">--</span>
+                <span class="unit">ms</span>
+            </article>
+
+            <article class="card">
+                <span class="label">Packet Loss</span>
+                <span class="value" id="packet-loss">--</span>
+                <span class="unit">%</span>
+            </article>
+
+            <article class="card">
+                <span class="label">Download Activity</span>
+                <span class="value" id="download-rate">--</span>
+                <span class="unit">Mbps</span>
+            </article>
+
+            <article class="card">
+                <span class="label">Upload Activity</span>
+                <span class="value" id="upload-rate">--</span>
+                <span class="unit">Mbps</span>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Internet Speed Test</h2>
+                    <p>Run an active throughput test</p>
+                </div>
+
+                <button id="speed-test-button">
+                    Run Speed Test
+                </button>
+            </div>
+
+            <div class="speed-grid">
+                <div>
+                    <span class="label">Download</span>
+                    <strong id="speed-download">-- Mbps</strong>
+                </div>
+
+                <div>
+                    <span class="label">Upload</span>
+                    <strong id="speed-upload">-- Mbps</strong>
+                </div>
+
+                <div>
+                    <span class="label">Ping</span>
+                    <strong id="speed-ping">-- ms</strong>
+                </div>
+
+                <div>
+                    <span class="label">Jitter</span>
+                    <strong id="speed-jitter">-- ms</strong>
+                </div>
+            </div>
+
+            <p id="speed-server" class="server"></p>
+        </section>
+
+        <section class="panel">
+            <h2>Network Usage</h2>
+
+            <div class="usage-grid">
+                <div>
+                    <span class="label">Total Received</span>
+                    <strong id="total-received">-- MB</strong>
+                </div>
+
+                <div>
+                    <span class="label">Total Sent</span>
+                    <strong id="total-sent">-- MB</strong>
+                </div>
+
+                <div>
+                    <span class="label">Packets Received</span>
+                    <strong id="packets-received">--</strong>
+                </div>
+
+                <div>
+                    <span class="label">Packets Sent</span>
+                    <strong id="packets-sent">--</strong>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <span>Pulse Network Monitor</span>
+            <a href="/docs">API Documentation</a>
+        </footer>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

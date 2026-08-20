@@ -5,18 +5,29 @@ from app.services.ping import measure_ping
 from app.services.speed import run_speed_test
 from app.services.health import get_network_health
 
+from pathlib import Path
+
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+
 app = FastAPI(
     title="Pulse",
     description="A lightweight network monitoring and diagnostics API.",
     version="0.1.0",
 )
 
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
+
+app.mount(
+    "/static",
+    StaticFiles(directory=STATIC_DIR),
+    name="static",
+)
+
 @app.get("/")
 def root():
-    return {
-        "name": "Pulse",
-        "status": "running",
-    }
+    return FileResponse(STATIC_DIR / "index.html")
 
 @app.get("/ping")
 def ping_host(host: str = "8.8.8.8"):
