@@ -49,6 +49,37 @@
         <section class="panel">
             <div class="panel-header">
                 <div>
+                    <h2>Network Performance</h2>
+                    <p>Live measurements collected while Pulse is running</p>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <h3>Latency</h3>
+                <canvas id="latency-chart"></canvas>
+            </div>
+
+            <div class="chart-section">
+                <h3>Network Activity</h3>
+                <canvas id="bandwidth-chart"></canvas>
+
+                <div class="chart-legend">
+                    <span>
+                        <span class="legend-marker download-marker"></span>
+                        Download
+                    </span>
+
+                    <span>
+                        <span class="legend-marker upload-marker"></span>
+                        Upload
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
                     <h2>Internet Speed Test</h2>
                     <p>Run an active throughput test</p>
                 </div>
