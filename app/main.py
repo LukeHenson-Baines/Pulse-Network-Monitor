@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from app.services.bandwidth import get_bandwidth_usage
 from app.services.ping import measure_ping
 from app.services.speed import run_speed_test
+from app.services.health import get_network_health
 
 app = FastAPI(
     title="Pulse",
@@ -17,12 +18,6 @@ def root():
         "status": "running",
     }
 
-@app.get("/health")
-def health():
-    return {
-        "status": "healthy",
-    }
-
 @app.get("/ping")
 def ping_host(host: str = "8.8.8.8"):
     return measure_ping(host)
@@ -34,3 +29,14 @@ def bandwidth():
 @app.get("/speed")
 def speed():
     return run_speed_test()
+
+@app.get("/health")
+def health(host: str = "8.8.8.8"):
+    return get_network_health(host)
+
+@app.get("/metrics")
+def metrics(host: str = "8.8.8.8"):
+    return {
+        "health": get_network_health(host),
+        "bandwidth": get_bandwidth_usage(),
+    }
